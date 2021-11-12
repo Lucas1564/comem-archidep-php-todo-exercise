@@ -13,9 +13,11 @@ define('BASE_URL', '/');
 define('DB_USER', 'todolist');
 define('DB_PASS', 'Archidep2021$');
 define('DB_NAME', 'todolist');
+// Database Host
 define('DB_HOST', '127.0.0.1');
 define('DB_PORT', '3306');
 
+// PDO connexion to Database
 $db = new PDO('mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
 $items = array();
 
@@ -46,7 +48,7 @@ if (isset($_POST['action'])) {
 
       $id = $_POST['id'];
       if (is_numeric($id)) {
-        $updateQuery = "UPDATE todo SET done = NOT done WHERE id =" . $id; // IMPLEMENT ME
+        $updateQuery = "UPDATE todo SET done = NOT done WHERE id =" . $id;
         if (!$db->query($updateQuery)) {
           die(print_r($db->errorInfo(), true));
         }
@@ -62,7 +64,7 @@ if (isset($_POST['action'])) {
 
       $id = $_POST['id'];
       if (is_numeric($id)) {
-        $deleteQuery = 'DELETE FROM todo WHERE id =' . $id; // IMPLEMENT ME
+        $deleteQuery = 'DELETE FROM todo WHERE id =' . $id;
         if (!$db->query($deleteQuery)) {
           die(print_r($db->errorInfo(), true));
         }
@@ -77,9 +79,9 @@ if (isset($_POST['action'])) {
 }
 
 /**
- * Select all tasks from the database.
+ * Select all tasks from the database order by DESC
  */
-$selectQuery = "SELECT * FROM todo ORDER BY created_at DESC"; // IMPLEMENT ME
+$selectQuery = "SELECT * FROM todo ORDER BY created_at DESC";
 $items = $db->query($selectQuery);
 ?>
 

@@ -7,7 +7,7 @@
 // application at "http://localhost:8888", then BASE_URL should be "/".
 
 //Si la valeur est indispo, ça sera / par défaut
-define('BASE_URL', 'getenv('TODOLIST_BASE_URL')?:'/');
+define('BASE_URL', getenv('TODOLIST_BASE_URL')?:'/');
 
 // Database connection parameters.
 define('DB_USER', getenv('TODOLIST_DB_USER')?:'todolist');
